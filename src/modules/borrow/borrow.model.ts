@@ -1,12 +1,20 @@
-import { Schema, model, Types } from "mongoose";
+import { Schema, model, Document } from "mongoose";
 
-const borrowSchema = new Schema(
+export interface IBorrow extends Document {
+  book: Schema.Types.ObjectId;
+  quantity: number;
+  dueDate: Date;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+const borrowSchema = new Schema<IBorrow>(
   {
-    book: { type: Types.ObjectId, ref: "Book", required: true },
+    book: { type: Schema.Types.ObjectId, ref: "Book", required: true },
     quantity: { type: Number, required: true, min: 1 },
     dueDate: { type: Date, required: true },
   },
   { timestamps: true },
 );
 
-export const Borrow = model("Borrow", borrowSchema);
+export const Borrow = model<IBorrow>("Borrow", borrowSchema);
