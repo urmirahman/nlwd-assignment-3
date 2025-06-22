@@ -15,7 +15,7 @@ A robust RESTful API built with **Node.js**, **Express**, **TypeScript**, and **
 
 - **Books Management:** Add, update, delete, and retrieve books with availability tracking.
 - **Borrowing System:** Borrow books, track quantities, and enforce availability rules.
-- **Filtering & Sorting:** Flexible query parameters for filtering by genre, sorting, and limiting results but optinal so if all books need s fetch without filtering then it can be done.
+- **Filtering & Sorting:** Flexible query parameters for filtering by genre, sorting, and limiting results but optional so if all books need to fetch without filtering then it can be done.
 - **Error Handling:** Centralized error handling with custom `ApiError` for validation and runtime errors.
 - **Aggregation Pipeline:** Efficient data aggregation for borrowed books summary and all books .
 - **Vercel Deployment:** Fully optimized for serverless deployment on Vercel using vercel CLI.
