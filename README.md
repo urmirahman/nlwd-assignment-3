@@ -144,5 +144,3 @@ Content-Type: application/json
 ## 📜 License
 
 This project is for educational purposes. All rights reserved.
-
-Readme need update
