@@ -17,10 +17,15 @@ export const getAllBooksService = async (query: any = {}) => {
 
   const limit = query.limit ? parseInt(query.limit, 10) : 10;
 
-  const pipeline = [{ $match: filter }, { $sort: sort }, { $limit: limit }];
+  const useAggregation =
+    query.useAggregate === "true" || query.useAggregate === true;
 
-  const books = await Book.aggregate(pipeline);
-  return books;
+  if (useAggregation) {
+    const pipeline = [{ $match: filter }, { $sort: sort }, { $limit: limit }];
+    return await Book.aggregate(pipeline);
+  } else {
+    return await Book.find(filter).sort(sort).limit(limit);
+  }
 };
 
 export const getBookByIdService = async (id: string) => {
