@@ -6,7 +6,7 @@ A robust RESTful API built with **Node.js**, **Express**, **TypeScript**, and **
 
 ## 🌐 Live Links
 
-- **GitHub Repository:** [Library Management Backend](https://github.com/urmirahmans-projects/nlwd-assignment-3)
+- **GitHub Repository:** [Library Management Backend](https://github.com/urmirahmans/nlwd-assignment-3)
 - **Live Deployment:** [Library Management API](https://nlwd-assignment-3-theta.vercel.app/)
 - **Video Explanation:** [Coming Soon](#)
 
