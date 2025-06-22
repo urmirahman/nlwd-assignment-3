@@ -96,8 +96,8 @@ This API provides endpoints for managing books and borrowing records in a librar
     "description": "A fantasy novel set in Middle-earth.",
     "copies": 10,
     "available": true,
-    "createdAt": "timestamp",
-    "updatedAt": "timestamp"
+  "createdAt": "2025-06-22T05:07:17.261Z",
+  "updatedAt": "2025-06-22T05:08:00.715Z"
   }
 }
 ```
@@ -138,8 +138,8 @@ This API provides endpoints for managing books and borrowing records in a librar
       "description": "An introduction to cosmology and the nature of the universe.",
       "copies": 6,
       "available": true,
-      "createdAt": "timestamp",
-      "updatedAt": "timestamp"
+      "createdAt": "2025-06-22T05:07:17.261Z",
+      "updatedAt": "2025-06-22T05:08:00.715Z"
     }
   ]
 }
@@ -167,8 +167,8 @@ This API provides endpoints for managing books and borrowing records in a librar
     "description": "A fantasy novel set in Middle-earth.",
     "copies": 10,
     "available": true,
-    "createdAt": "timestamp",
-    "updatedAt": "timestamp"
+    "createdAt": "2025-06-22T05:07:17.261Z",
+    "updatedAt": "2025-06-22T05:08:00.715Z"
   }
 }
 ```
@@ -202,8 +202,8 @@ This API provides endpoints for managing books and borrowing records in a librar
     "description": "Updated description",
     "copies": 15,
     "available": true,
-    "createdAt": "timestamp",
-    "updatedAt": "timestamp"
+    "createdAt": "2025-06-22T05:07:17.261Z",
+    "updatedAt": "2025-06-22T05:08:00.715Z"
   }
 }
 ```
@@ -255,8 +255,8 @@ This API provides endpoints for managing books and borrowing records in a librar
     "book": "book_id",
     "quantity": 2,
     "dueDate": "2025-07-18T00:00:00.000Z",
-    "createdAt": "timestamp",
-    "updatedAt": "timestamp"
+    "createdAt": "2025-06-22T05:07:17.261Z",
+    "updatedAt": "2025-06-22T05:08:00.715Z"
   }
 }
 ```
