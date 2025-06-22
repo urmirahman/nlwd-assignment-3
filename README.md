@@ -8,7 +8,6 @@ A robust RESTful API built with **Node.js**, **Express**, **TypeScript**, and **
 
 - **GitHub Repository:** [Library Management Backend](https://github.com/urmirahman/nlwd-assignment-3)
 - **Live Deployment:** [Library Management API](https://nlwd-assignment-3-theta.vercel.app/)
-- **Video Explanation:** [Coming Soon](#)
 
 ---
 
@@ -96,8 +95,8 @@ This API provides endpoints for managing books and borrowing records in a librar
     "description": "A fantasy novel set in Middle-earth.",
     "copies": 10,
     "available": true,
-  "createdAt": "2025-06-22T05:07:17.261Z",
-  "updatedAt": "2025-06-22T05:08:00.715Z"
+    "createdAt": "2025-06-22T05:07:17.261Z",
+    "updatedAt": "2025-06-22T05:08:00.715Z"
   }
 }
 ```
