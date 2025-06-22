@@ -48,8 +48,10 @@ npm install
 Create a `.env` file in the root directory and add the following:
 
 ```env
-PORT=5001
-MONGODB_URI=your-mongodb-url
+DATABASE_URL=
+PORT=
+NODE_ENV=
+
 ```
 
 ---
