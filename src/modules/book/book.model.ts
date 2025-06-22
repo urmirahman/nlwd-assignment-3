@@ -7,34 +7,52 @@ interface BookModel extends Model<IBook> {
 
 const bookSchema = new Schema<IBook, BookModel>(
   {
-    title: { type: String, required: true },
-    author: { type: String, required: true },
+    title: {
+      type: String,
+      required: [true, "Title is required"],
+    },
+    author: {
+      type: String,
+      required: [true, "Author is required"],
+    },
     genre: {
       type: String,
-      required: true,
-      enum: [
-        "FICTION",
-        "NON_FICTION",
-        "SCIENCE",
-        "HISTORY",
-        "BIOGRAPHY",
-        "FANTASY",
-      ],
+      required: [true, "Genre is required"],
+      enum: {
+        values: [
+          "FICTION",
+          "NON_FICTION",
+          "SCIENCE",
+          "HISTORY",
+          "BIOGRAPHY",
+          "FANTASY",
+        ],
+        message: "{VALUE} is not a valid genre",
+      },
     },
-    isbn: { type: String, required: true, unique: true },
-    description: { type: String },
-    copies: { type: Number, required: true, min: 0 },
-    available: { type: Boolean, default: true },
+    isbn: {
+      type: String,
+      required: [true, "ISBN is required"],
+      unique: true,
+    },
+    description: {
+      type: String,
+    },
+    copies: {
+      type: Number,
+      required: [true, "Copies is required"],
+      min: [0, "Copies must be a non-negative integer"],
+    },
+    available: {
+      type: Boolean,
+      default: true,
+    },
   },
   { timestamps: true },
 );
 
 bookSchema.pre<IBook>("save", function (next) {
-  if (this.copies === 0) {
-    this.available = false;
-  } else {
-    this.available = true;
-  }
+  this.available = this.copies > 0;
   next();
 });
 
