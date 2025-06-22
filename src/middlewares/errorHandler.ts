@@ -27,7 +27,6 @@ const errorHandler = (
     error: {
       name: err.name || "Error",
       message,
-      statusCode,
       stack: process.env.NODE_ENV !== "production" ? err.stack : undefined,
     },
   });

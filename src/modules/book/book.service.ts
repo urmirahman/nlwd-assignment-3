@@ -6,7 +6,6 @@ export const createBookService = async (payload: any) => {
 
 export const getAllBooksService = async (query: any = {}) => {
   const filter: any = {};
-
   if (query.filter) {
     filter.genre = query.filter;
   }
@@ -18,7 +17,9 @@ export const getAllBooksService = async (query: any = {}) => {
 
   const limit = query.limit ? parseInt(query.limit, 10) : 10;
 
-  const books = await Book.find(filter).sort(sort).limit(limit);
+  const pipeline = [{ $match: filter }, { $sort: sort }, { $limit: limit }];
+
+  const books = await Book.aggregate(pipeline);
   return books;
 };
 

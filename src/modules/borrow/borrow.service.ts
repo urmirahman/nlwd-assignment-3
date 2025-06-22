@@ -14,7 +14,7 @@ export const borrowBookService = async (data: {
 };
 
 export const getBorrowedSummaryService = async () => {
-  return await Borrow.aggregate([
+  const pipeline = [
     {
       $group: {
         _id: "$book",
@@ -39,5 +39,6 @@ export const getBorrowedSummaryService = async () => {
         totalQuantity: 1,
       },
     },
-  ]);
+  ];
+  return await Borrow.aggregate(pipeline);
 };
