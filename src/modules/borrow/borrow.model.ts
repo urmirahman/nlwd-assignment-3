@@ -1,12 +1,5 @@
-import { Schema, model, Document } from "mongoose";
-
-export interface IBorrow extends Document {
-  book: Schema.Types.ObjectId;
-  quantity: number;
-  dueDate: Date;
-  createdAt: Date;
-  updatedAt: Date;
-}
+import { Schema, model } from "mongoose";
+import { IBorrow } from "./borrow.interface";
 
 const borrowSchema = new Schema<IBorrow>(
   {

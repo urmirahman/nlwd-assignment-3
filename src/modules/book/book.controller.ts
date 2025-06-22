@@ -24,11 +24,11 @@ export const getAllBooks = async (req: Request, res: Response) => {
       message: "Books retrieved successfully",
       data: books,
     });
-  } catch (error) {
+  } catch (error: any) {
     res.status(400).json({
       success: false,
       message: "Failed to retrieve books",
-      error,
+      error: error.message,
     });
   }
 };

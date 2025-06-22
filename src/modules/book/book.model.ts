@@ -1,25 +1,11 @@
 import { Schema, model, Document, Model } from "mongoose";
+import { IBook } from "./book.interface";
 
-// 1. Define an interface for your document
-interface IBook extends Document {
-  title: string;
-  author: string;
-  genre: string;
-  isbn: string;
-  description?: string;
-  copies: number;
-  available: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-// 2. Define an interface for static methods
 interface BookModel extends Model<IBook> {
   decrementCopies(bookId: string, quantity: number): Promise<IBook>;
 }
 
-// 3. Create the schema
-const bookSchema = new Schema<IBook>(
+const bookSchema = new Schema<IBook, BookModel>(
   {
     title: { type: String, required: true },
     author: { type: String, required: true },
@@ -36,26 +22,39 @@ const bookSchema = new Schema<IBook>(
       ],
     },
     isbn: { type: String, required: true, unique: true },
-    description: String,
+    description: { type: String },
     copies: { type: Number, required: true, min: 0 },
     available: { type: Boolean, default: true },
   },
   { timestamps: true },
 );
 
-// 4. Implement the static method
+bookSchema.pre<IBook>("save", function (next) {
+  if (this.copies === 0) {
+    this.available = false;
+  } else {
+    this.available = true;
+  }
+  next();
+});
+
+bookSchema.post<IBook>("save", function (doc, next) {
+  console.log(
+    `Book "${doc.title}" (ID: ${doc._id}) was saved. Available: ${doc.available}`,
+  );
+  next();
+});
+
 bookSchema.statics.decrementCopies = async function (
   bookId: string,
   quantity: number,
 ) {
   const book = await this.findById(bookId);
   if (!book) throw new Error("Book not found");
-  if (book.copies < quantity) throw new Error("Not enough copies");
+  if (book.copies < quantity) throw new Error("Not enough copies available");
 
   book.copies -= quantity;
-  book.available = book.copies > 0;
   return await book.save();
 };
 
-// 5. Export the properly typed model
 export const Book = model<IBook, BookModel>("Book", bookSchema);
